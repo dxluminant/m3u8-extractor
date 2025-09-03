@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi m3u8 Finder</title>
+</head>
+<body>
+    <h1>Multi m3u8 Finder</h1>
+    <form method="POST">
+        <textarea name="urls" rows="10" cols="80" placeholder="Enter one URL per line"></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if results %}
+        <h2>Results:</h2>
+        {% for url, data in results.items() %}
+            <h3>{{ url }}</h3>
+            <p><b>Best quality:</b> {{ data.best }}</p>
+            <p><b>All m3u8 links:</b></p>
+            <ul>
+                {% for link in data.all %}
+                    <li>{{ link }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
